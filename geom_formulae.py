@@ -1,7 +1,7 @@
 __author__ = 'lois'
 
 from numbers import Number
-
+from math import *
 
 def triangle_area(base, height):
     """
@@ -64,7 +64,6 @@ def parallelogram_area(base,height):
     """
     return base * height
 
-#area is printed in meters squared
 
 def parallelogram_perimeter(sideA,sideB):
     """
@@ -82,30 +81,28 @@ if __name__ == "__main__":
     print ("par_perimeter",parallelogram_perimeter(6,5))
 
 
-def circle_area(pi,radius):
+def circle_area(radius):
     """
-
-    :param pi: a constant value
+    this computes the area of a circle with a radius.
     :param radius:half the diameter of a circle
     :return:
-    >>> circle_area (3.143, 6)
+    >>> circle_area (6)
     113.148
     """
     return pi*radius*radius
 
 if __name__ == "__main__":
-    print("cir_area",circle_area(3.143,6))
+    print("cir_area",circle_area(6))
 
-def circle_circumference(pi,radius):
+def circle_circumference(radius):
     """
-
-    :param pi: a constant value
+    this computes the circumference of a circle.
     :param radius: half the diameter of a circle
     :return:
-    >>> circle_circumference(3.143,6)
+    >>> circle_circumference(6)
     37.715
     """
     return 2*pi*radius
 
 if __name__ == "__main__":
-    print("cir_circumference:",circle_circumference(3.143,6))
+    print("cir_circumference:",circle_circumference(6))
