@@ -3,6 +3,23 @@ __author__ = 'lois'
 from numbers import Number
 from math import *
 
+
+def geom_validate(val):
+    """
+    Test if val is a Number and is >= 0.
+
+    >>> geom_validate(5)
+    True
+
+    >>> geom_validate(-5)
+    False
+
+    >>> geom_validate("a string")
+    False
+    """
+    return isinstance(val, Number) and val >= 0
+print(geom_validate('hj'))
+
 def triangle_area(base, height):
     """
 
@@ -10,9 +27,13 @@ def triangle_area(base, height):
     :param height:height of triangle
     :return:
     >>> triangle_area(6, 5)
-    15
+    15.0
     """
-    return 0.5*base*height
+    if (geom_validate(base)) and (geom_validate(height)) :
+        return 0.5*base*height
+    else:
+        raise ValueError("base or height is less than 0: "+str(base,height))
+
 
 
 def triangle_perimeter(side1,side2, side3):
@@ -22,7 +43,7 @@ def triangle_perimeter(side1,side2, side3):
     :param side2:right side of triangle
     :param side3:base side of triangle
     :return:
-    >>>triangle_perimeter(6,6,4)
+    >>> triangle_perimeter(6,6,4)
     16
     """
     return side1+ side2+side3
@@ -37,7 +58,7 @@ def rectangle_area(length, width):
     :param length: length of rectangle
     :param width: width of rectangle
     :return:
-    >>>rectangle_area(3,7)
+    >>> rectangle_area(3,7)
     21
     """
     return length*width
@@ -59,7 +80,7 @@ def parallelogram_area(base,height):
     :param base: base of parallelogram
     :param height: height of parallelogram
     :return:
-    >>>parallelogram_area (5, 7)
+    >>> parallelogram_area (5, 7)
     35
     """
     return base * height
@@ -71,7 +92,7 @@ def parallelogram_perimeter(sideA,sideB):
     :param sideA: right and left sides of paralelogram
     :param sideB:top and bottom of parallelogram
     :return:
-    >>>parallelogram_perimeter(6,5)
+    >>> parallelogram_perimeter(6,5)
     22
     """
     return 2*(sideA+sideB)
@@ -106,3 +127,19 @@ def circle_circumference(radius):
 
 if __name__ == "__main__":
     print("cir_circumference:",circle_circumference(6))
+
+
+
+def func_try(a=0):
+    try: # steps you think might produce an error
+        h = float(input("Provide a value for the base of triangle:"))
+    except ValueError as err: # how you want to handle that error
+        print("Wrong entry, please enter a number.Error", err)
+        func_try(a+1)
+    else: # what to do if there was no error
+        print("triangle_area is:", triangle_area(h,6))
+    finally: # what to always do, errors or not
+        print("exiting attempt",a+1)
+
+if __name__ == "__main__":
+    func_try()
