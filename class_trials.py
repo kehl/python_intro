@@ -4,15 +4,15 @@ from nose.tools import *
 
 
 def rectangle_area_int():
-    assert rectangle_area(1,2) == 2
+    assert rectangle_area(4,2) == 8
     assert rectangle_area(2,5) == 10
     s = 5
     assert rectangle_area(s*2,2) == 2*rectangle_area(s,2)
 
 
 def rectangle_area2():
-    assert triangle_area(8,2) == 6
-    assert triangle_area(2,5) == 10
+    assert triangle_area(8,2) == 8
+    assert triangle_area(2,5) == 5
 
 
 @raises(TypeError)

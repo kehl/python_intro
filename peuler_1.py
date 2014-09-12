@@ -1,6 +1,6 @@
 __author__ = 'lois'
 
-
+# solution to problem 1
 sum= 0
 for x in range(1, 1000):
     # if x is divisible by 3 or by 5
