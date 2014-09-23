@@ -15,6 +15,17 @@ def dim_checker(**kwargs):
         elif not arg >= 0:
             raise ValueError(errmsg)
 
+class Shape_C(object):
+    shapes_created = 0
+    def __init__(self, **kwargs):
+        dim_checker(**kwargs)
+        self.shapes_created += 1
+
+    def __str__(self):
+        return self.__class__.__name__ +\
+            "; area : "+str(self.area)+\
+            "; circumference: "+str(self.circumference)
+
 
 class Shape(object):
     shapes_created = 0
@@ -26,6 +37,7 @@ class Shape(object):
         return self.__class__.__name__ +\
             "; area : "+str(self.area)+\
             "; perimeter: "+str(self.perimeter)
+
 class Equilateral_Triangle(Shape):
     """a class representation of an equilateral triangle"""
     equilateral_triangle_created = 0
@@ -132,7 +144,7 @@ if __name__ == "__main__":
     para.draw()
 
 
-class Circle(Shape):
+class Circle(Shape_C):
     """a class representation of a circle"""
     circle_created = 0
     def __init__(self, radius:(int,float)):
@@ -140,7 +152,7 @@ class Circle(Shape):
         self.circle_created += 1
         self.radius = radius
         self.area = self.radius**2 * pi
-        self.perimeter = 2 * pi * self.radius
+        self.circumference = 2 * pi * self.radius
 
     def __str__(self):
         return super(Circle, self).__str__()+"; radius: "+str(self.radius)
