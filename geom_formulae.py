@@ -134,12 +134,12 @@ def func_try(a=0):
     try: # steps you think might produce an error
         h = float(input("Provide a value for the base of triangle:"))
     except ValueError as err: # how you want to handle that error
-        print("Wrong entry, please enter a number.Error", err)
+        print("", err)
         func_try(a+1)
     else: # what to do if there was no error
-        print("triangle_area is:", triangle_area(h,6))
+        print("Square perimeter is:", triangle_area(s,6))
     finally: # what to always do, errors or not
         print("exiting attempt",a+1)
 
 if __name__ == "__main__":
-    func_try()
+    square_try()
